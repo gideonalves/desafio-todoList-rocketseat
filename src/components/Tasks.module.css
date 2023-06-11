@@ -1,0 +1,226 @@
+.createTask {
+    margin-top: calc(0px - 1.5rem - 6px);
+    margin-bottom: 4rem;
+}
+
+.createTask form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.createTask input {
+    background-color: var(--gray-500);
+    border: 1px solid var(--gray-700);
+    color: var(--gray-100);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+
+    transition: border 100ms;
+}
+
+.createTask input:hover {
+    border: 1px solid var(--purpleDark);
+}
+
+.createTask input:focus-within {
+    outline: transparent;
+    border:1px solid var(--purple);
+}
+
+.createTask button {
+    background-color: var(--blueDark);
+    color: var(--gray-100); 
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 8px;
+    width: 5.625rem;
+    height: 3.25rem;
+    cursor: pointer;
+
+    transition: background-color 100ms;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.createTask button:hover {
+    background-color: var(--blue);
+}
+
+@media (max-width: 500px) {
+    .createTask form {
+        flex-direction: column;
+    }
+
+    .createTask button {
+        width: 100%;
+    }
+}
+
+/* ########## HEADER ########## */
+.header {
+    margin-bottom: 1.5rem;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.header span {
+    font-size: 0.875rem;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header span:nth-child(1) {
+    color: var(--blue);
+}
+
+.header span:nth-child(2) {
+    color: var(--purple);
+}
+
+.header span span:last-child  {
+    background-color: var(--gray-400);
+    color: var(--gray-100);
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+/* ########## TODO LIST ########## */
+.toDoList {
+    border-top: 1px solid var(--gray-400);
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* ##### - NO TASKS */
+.noTasks {
+    height: 15.25rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hideNoTasks  {
+    visibility: hidden;
+    height: 0;
+}
+
+.noTasks img {
+    height: 3.625rem;
+    margin-bottom: 1rem;
+}
+
+.noTasks span:nth-of-type(1) {
+    font-weight: 700;
+    line-height: 1.4rem;
+}
+
+/* ##### - WITH TASKS */
+.boxWithTasks {
+    background-color: var(--gray-500);
+    padding: 1rem;
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.boxWithTasks + .boxWithTasks {
+    margin-top: 0.75rem;
+}
+
+.infoTask {
+    position: relative;
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+}
+
+/* ##### - INPUT CHECKBOX */
+.infoTask input[type=checkbox] {
+    visibility: hidden;
+}
+    
+.infoTask input[type=checkbox] + label:before {
+    position: absolute;
+    left: 0;
+    top: 2px;
+
+    content: "\2713";
+    border: 2px solid var(--blue);
+    border-radius: 50%;
+    width: 0.841rem;
+    height: 0.841rem;
+    color: transparent;
+    font-size: 0.6rem;
+    transition: .2s;
+    cursor: pointer;
+
+    display: inline-block;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoTask input[type=checkbox]:hover + label:before {
+    border: 2px solid var(--blueDark);
+}
+    
+.infoTask input[type=checkbox]:checked + label:before {
+    background-color: var(--purpleDark);
+    /* border-color: var(--purpleDark); */
+    border-color: var(--purpleDark);
+    color: var(--gray-100);
+    color: var(--gray-100);
+}
+
+.infoTask input[type=checkbox]:hover:checked + label:before {
+    background-color: var(--purple);
+    border-color: var(--purple);
+}
+
+.infoTask label {
+    color: var(--gray-100);
+    font-size: 0.875rem;
+    line-height: 1.4rem;
+}
+
+.infoTask input[type=checkbox]:checked + label {
+    text-decoration: line-through;
+    color: var(--gray-300);
+}
+
+/* ##### - TRASH */
+.boxWithTasks button {
+    line-height: 0;
+    background-color: transparent;
+    border: none;
+    color: var(--gray-300);
+    padding: 0.3125rem;
+    cursor: pointer;
+
+    transition: background-color 100ms, color 100ms;
+}
+
+.boxWithTasks button:hover {
+    background-color: var(--gray-400);
+    border-radius: 4px;
+    color: var(--danger);
+}
