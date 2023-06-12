@@ -6,41 +6,24 @@ import { useState } from 'react';
 
 export function Tasks({ content }) {
 
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            content: "a1",
-        },    
-        {
-            id: 2,
-            content: "a2",
-        },
-        {
-            id: 3,
-            content: "a3",
-        },
-    ])
-
+    const [tasks, setTasks] = useState([])
     const [newTaskText, setNewTaskText] = useState('')
-
-
     const [completedTasks, setCompletedTasks] = useState(0)
-
+    const [idTaskQueue, setIdTaskQueue] = useState([])
 
     function handleCheckTheMarkedTasks(e) {
+        
         if(e.currentTarget.checked) {
             setCompletedTasks(completedTasks + 1)
+            setIdTaskQueue([...idTaskQueue, e.currentTarget.id])
             return
         }
-        setCompletedTasks(completedTasks - 1)
-    
+        setIdTaskQueue(idTaskQueue.filter(id => id !== e.currentTarget.id))
+        setCompletedTasks(completedTasks - 1)          
         return
-
-    }
- 
+    } 
 
     const taskCount = tasks.length;
-
 
     function handleCreateNewTask() {
         event.preventDefault()
@@ -52,18 +35,16 @@ export function Tasks({ content }) {
         setNewTaskText(event.target.value)
     }
  
-
-
-    // função do botão deletar
     function handleDeleteTask(e) {
         const taskDelete = tasks.filter(task => task.id != e.currentTarget.id)
         setTasks(taskDelete)
-        if(completedTasks > tasks.length - 1) {
-            setCompletedTasks(completedTasks - 1)
+
+        if(idTaskQueue.includes(e.currentTarget.id)) {
+            setCompletedTasks(completedTasks -1)
         }
     }
 
-    return (        
+    return (  
 
         <div className={styles.tasks}>
             <div className={styles.createTask}>
