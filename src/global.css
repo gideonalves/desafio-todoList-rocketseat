@@ -21,11 +21,6 @@
     box-sizing: border-box;
 }
 
-/* tira as bordas de todos os elementos */
-/* :focus {
-    outline: transparent;
-} */
-
 body {
     background-color: var(--gray-600);
     color: var(--gray-300);
